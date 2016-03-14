@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>Demo Modularization</title>
+
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.ui.commons"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"sap.training": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+		   /*
+			*  1
+			*/
+			var oButton = new sap.ui.commons.Button({
+				text: "Hello World"
+			});
+			
+			jQuery.sap.require("sap.m.MessageToast");
+			oButton.attachPress(function() {
+				sap.m.MessageToast.show("Hello World", {
+					at: "center top"
+				});
+			});
+			
+			oButton.placeAt("content");
+			
+		   /*
+			*  2
+			*/
+			jQuery.sap.require("sap.training.util.Formatter");
+			alert(sap.training.util.Formatter.uppercaseFirstChar("hello World"));
+			
+			/*
+			*  3
+			*/
+			sap.ui.require(["sap/training/modules/MyModule"], function(MyModule) {
+				MyModule.showMessage("hello World");
+			});
+			
+			
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>
