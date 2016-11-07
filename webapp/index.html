@@ -9,8 +9,8 @@
 
 		<script id="sap-ui-bootstrap"
 			src="../../resources/sap-ui-core.js"
-			data-sap-ui-libs="sap.ui.commons"
-			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-resourceroots='{"sap.training": ""}'>
 		</script>
@@ -18,36 +18,39 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<script>
+		
 		   /*
 			*  1
 			*/
-			var oButton = new sap.ui.commons.Button({
-				text: "Hello World"
+			var oButton = new sap.m.Button({
+				text: "Display Date 1"
 			});
 			
-			jQuery.sap.require("sap.m.MessageToast");
+		
 			oButton.attachPress(function() {
-				sap.m.MessageToast.show("Hello World", {
-					at: "center top"
-				});
+				jQuery.sap.require("sap.training.modules.MyModule1");
+				sap.training.modules.MyModule1.displayDate(new Date());
 			});
 			
 			oButton.placeAt("content");
 			
-		   /*
-			*  2
-			*/
-			jQuery.sap.require("sap.training.util.Formatter");
-			alert(sap.training.util.Formatter.uppercaseFirstChar("hello World"));
 			
 			/*
-			*  3
+			*  2
 			*/
-			sap.ui.require(["sap/training/modules/MyModule"], function(MyModule) {
-				MyModule.showMessage("hello World");
+			var oButton = new sap.m.Button({
+				text: "Display Date 2"
 			});
 			
+		
+			oButton.attachPress(function() {
+				sap.ui.require(["sap/training/modules/MyModule2"], function(MyModule2) {
+					MyModule2.displayDate(new Date());
+				});
+			});
 			
+			oButton.placeAt("content");
+		
 		</script>
 	</head>
 
