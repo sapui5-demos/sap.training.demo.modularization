@@ -11,35 +11,31 @@
 			src="../../resources/sap-ui-core.js"
 			data-sap-ui-libs="sap.m"
 			data-sap-ui-theme="sap_belize"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-resourceroots='{"sap.training": ""}'>
+			data-sap-ui-compatVersion="edge">
 		</script>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<script>
 		
-		   /*
-			*  1
-			*/
-			var oButton = new sap.m.Button({
-				text: "Display Date 1"
-			});
-			
 		
-			oButton.attachPress(function() {
-				jQuery.sap.require("sap.training.modules.MyModule1");
-				sap.training.modules.MyModule1.displayDate(new Date());
+			sap.ui.loader.config({
+	    						// location from where to load all modules by default
+	    						baseUrl: '../../resources/',
+	
+							    paths: {
+							      // load modules whose ID equals to or starts with 'sap/training' from the webapp folder
+							      'sap/training': './'
+							    },
+	
+							    // activate real async loading and module definitions
+							    async: true
 			});
+		
+		 
 			
-			oButton.placeAt("content");
-			
-			
-			/*
-			*  2
-			*/
 			var oButton = new sap.m.Button({
-				text: "Display Date 2"
+				text: "Display Date"
 			});
 			
 		
